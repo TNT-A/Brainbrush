@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://cowxouej155xd"]
+
+[ext_resource type="Script" uid="uid://5rojbyog5wuj" path="res://paint_splash.gd" id="1_scvau"]
+[ext_resource type="Texture2D" uid="uid://dwrn8jcfytk4j" path="res://sprites/paint/green-splatter-1-624x521.png" id="2_cgjws"]
+
+[sub_resource type="Animation" id="Animation_scvau"]
+resource_name = "spawn"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.25, 0.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-6.28319, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_cgjws"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.25, 0.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_464fe"]
+_data = {
+&"RESET": SubResource("Animation_cgjws"),
+&"spawn": SubResource("Animation_scvau")
+}
+
+[node name="PaintSplash" type="Node2D"]
+z_index = -5
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_scvau")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_cgjws")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_464fe")
+}

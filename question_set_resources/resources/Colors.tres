@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Colors" load_steps=2 format=3 uid="uid://u7fbje0kr18l"]
+
+[ext_resource type="Script" uid="uid://cuoseirjaqgmo" path="res://question_set_resources/scripts/colors.gd" id="1_tft2x"]
+
+[resource]
+script = ExtResource("1_tft2x")
+metadata/_custom_type_script = "uid://cuoseirjaqgmo"

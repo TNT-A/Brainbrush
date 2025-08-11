@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpc2vbcudwow5"]
+
+[ext_resource type="PackedScene" uid="uid://dp0e1u8fjopwf" path="res://yes-no-system/yes+node.tscn" id="1_53q0u"]
+[ext_resource type="Script" uid="uid://dsw8ooc13dwk1" path="res://main/main.gd" id="1_pjrb6"]
+[ext_resource type="PackedScene" uid="uid://crdpc1hol6wtx" path="res://round/round_name.tscn" id="4_3wy1v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xwkvk"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_pjrb6")
+
+[node name="Yes+Node" parent="." instance=ExtResource("1_53q0u")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="RoundName" parent="." instance=ExtResource("4_3wy1v")]
+position = Vector2(0, 110)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Round 0"
+label_settings = SubResource("LabelSettings_xwkvk")
+
+[node name="PaintCanvas" type="Node2D" parent="."]
