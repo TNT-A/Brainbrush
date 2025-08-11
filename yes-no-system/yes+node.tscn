@@ -1,0 +1,122 @@
+[gd_scene load_steps=12 format=3 uid="uid://dp0e1u8fjopwf"]
+
+[ext_resource type="Script" uid="uid://vwfvnx2832h4" path="res://yes-no-system/yes+node.gd" id="1_vgi0n"]
+[ext_resource type="Texture2D" uid="uid://bf4o0q2xmtpg4" path="res://sprites/Colors/blue.png" id="2_gwc4e"]
+[ext_resource type="Texture2D" uid="uid://sguv7khws0hy" path="res://sprites/Colors/red.png" id="3_q27s4"]
+[ext_resource type="Texture2D" uid="uid://dwthhcb4oablp" path="res://sprites/Colors/yellow.png" id="4_k7o7f"]
+[ext_resource type="Texture2D" uid="uid://csxm2ijmv7bjo" path="res://sprites/Colors/orange.png" id="5_62y85"]
+[ext_resource type="Texture2D" uid="uid://c1b4p3n47bgy7" path="res://sprites/Colors/green.png" id="6_ocjfp"]
+[ext_resource type="Texture2D" uid="uid://wxjw7e1j1io4" path="res://sprites/Colors/purple.png" id="7_bvsrr"]
+
+[sub_resource type="Animation" id="Animation_gwc4e"]
+resource_name = "slide_down"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 528), Vector2(1, 700)]
+}
+
+[sub_resource type="Animation" id="Animation_q27s4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 528)]
+}
+
+[sub_resource type="Animation" id="Animation_k7o7f"]
+resource_name = "slide_up"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 700), Vector2(1, 528)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_62y85"]
+_data = {
+&"RESET": SubResource("Animation_q27s4"),
+&"slide_down": SubResource("Animation_gwc4e"),
+&"slide_up": SubResource("Animation_k7o7f")
+}
+
+[node name="Yes+Node" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vgi0n")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 557.0
+offset_right = 1154.0
+offset_bottom = 703.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("2_gwc4e")
+
+[node name="Button2" type="Button" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("3_q27s4")
+
+[node name="Button3" type="Button" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("4_k7o7f")
+
+[node name="Button4" type="Button" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("5_62y85")
+
+[node name="Button5" type="Button" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("6_ocjfp")
+
+[node name="Button6" type="Button" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("7_bvsrr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_62y85")
+}
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Button6" to="." method="_on_button_6_pressed"]
